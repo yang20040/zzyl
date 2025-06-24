@@ -20,14 +20,14 @@ public class RoomTypeController extends BaseController {
     private RoomTypeService roomTypeService;
 
     @PostMapping
-    @ApiOperation("添加房型")
+    @ApiOperation(value = "添加房型", notes = "传入房型信息，返回添加结果")
     public ResponseResult addRoomType(@RequestBody RoomTypeDto roomTypeDTO) {
         roomTypeService.addRoomType(roomTypeDTO);
         return success();
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation("删除房型")
+    @ApiOperation(value = "删除房型" , notes = "根据房型ID删除指定房型，返回删除结果")
     public ResponseResult removeRoomType(
             @ApiParam(value = "房型ID", required = true) @PathVariable Long id) {
         roomTypeService.removeRoomType(id);
@@ -35,7 +35,7 @@ public class RoomTypeController extends BaseController {
     }
 
     @PutMapping("/{id}")
-    @ApiOperation("修改房型")
+    @ApiOperation(value = "修改房型" , notes = "传入房型信息，返回修改结果")
     public ResponseResult modifyRoomType(
             @ApiParam(value = "房型ID", required = true) @PathVariable Long id,
             @RequestBody RoomTypeDto roomTypeDTO) {
@@ -44,7 +44,7 @@ public class RoomTypeController extends BaseController {
     }
 
     @GetMapping("/{id}")
-    @ApiOperation("根据ID查询房型")
+    @ApiOperation(value = "查询房型" , notes = "根据房型ID查询指定房型，返回查询结果")
     public ResponseResult<RoomTypeVo> findRoomTypeById(
             @ApiParam(value = "房型ID", required = true) @PathVariable Long id) {
         RoomTypeVo roomTypeVO = roomTypeService.findRoomTypeById(id);
@@ -52,7 +52,7 @@ public class RoomTypeController extends BaseController {
     }
 
     @GetMapping
-    @ApiOperation("查询所有房型")
+    @ApiOperation(value = "查询所有房型" , notes = "返回所有房型列表")
     public ResponseResult<List<RoomTypeVo>> findRoomTypeList() {
         List<RoomTypeVo> roomTypeVoList = roomTypeService.findRoomTypeList();
         return success(roomTypeVoList);

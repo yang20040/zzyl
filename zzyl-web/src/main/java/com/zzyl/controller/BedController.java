@@ -36,6 +36,7 @@ public class BedController extends BaseController {
      * @return
      */
     @PostMapping("/create")
+    @ApiOperation(value = "创建床位", notes = "传入床位信息")
     public ResponseResult createBed(@RequestBody BedDto bedDto) {
         bedService.createBed(bedDto);
         return success();
@@ -47,7 +48,8 @@ public class BedController extends BaseController {
      * @return
      */
     @GetMapping("/read/{id}")
-    public ResponseResult getBedById(@PathVariable Long id) {
+    @ApiOperation(value = "根据id查询床位", notes = "传入床位id")
+    public ResponseResult getBedById(@ApiParam (value = "床位ID", required = true)@PathVariable Long id) {
         BedVo bedVo = bedService.getBedById(id);
         if (ObjectUtil.isEmpty(bedVo)) {
             return ResponseResult.error("查询失败,床位信息为空");
@@ -61,6 +63,7 @@ public class BedController extends BaseController {
      * @return
      */
     @PutMapping("/update")
+    @ApiOperation(value = "修改床位", notes = "传入床位信息")
     public ResponseResult updateBed(@RequestBody Bed bed) {
         bedService.updateBed(bed);
         return success();
@@ -72,7 +75,8 @@ public class BedController extends BaseController {
      * @return
      */
     @DeleteMapping("/delete/{id}")
-    public ResponseResult deleteBed(@PathVariable Long id) {
+    @ApiOperation(value = "删除床位", notes = "传入床位id")
+    public ResponseResult deleteBed(@ApiParam (value = "床位ID", required = true) @PathVariable Long id) {
         bedService.deleteBed(id);
         return success();
     }
