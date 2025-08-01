@@ -31,4 +31,36 @@
         </where>
         order by p.order_no,p.create_time desc
     </select>
+
+    <insert id="insert" parameterType="com.zzyl.entity.NursingProject">
+        INSERT INTO nursing_project
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">name,</if>
+            <if test="orderNo != null">order_no,</if>
+            <if test="unit != null and unit != ''">unit,</if>
+            <if test="price != null">price,</if>
+            <if test="image != null and image != ''">image,</if>
+            <if test="nursingRequirement != null and nursingRequirement != ''">nursing_requirement,</if>
+            <if test="status != null">status,</if>
+            <if test="createBy != null and createBy != ''">create_by,</if>
+            <if test="updateBy != null and updateBy != ''">update_by,</if>
+            <if test="remark != null and remark != ''">remark,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="orderNo != null">#{orderNo},</if>
+            <if test="unit != null and unit != ''">#{unit},</if>
+            <if test="price != null">#{price},</if>
+            <if test="image != null and image != ''">#{image},</if>
+            <if test="nursingRequirement != null and nursingRequirement != ''">#{nursingRequirement},</if>
+            <if test="status != null">#{status},</if>
+            <if test="createBy != null and createBy != ''">#{createBy},</if>
+            <if test="updateBy != null and updateBy != ''">#{updateBy},</if>
+            <if test="remark != null and remark != ''">#{remark},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+        </trim>
+    </insert>
 </mapper>

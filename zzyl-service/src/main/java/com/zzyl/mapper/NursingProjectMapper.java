@@ -8,4 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface NursingProjectMapper {
 
     Page<NursingProject> selectByPage(String name, Integer status);
+
+    void insert(NursingProject nursingProject);
 }
