@@ -1,5 +1,6 @@
 package com.zzyl.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.zzyl.base.PageResponse;
@@ -32,8 +33,25 @@ public class NursingProjectServiceImpl implements NursingProjectService {
     public void add(NursingProjectDto nursingProjectDto) {
         NursingProject nursingProject = new NursingProject();
         BeanUtils.copyProperties(nursingProjectDto, nursingProject);
-        nursingProject.setCreateBy(NursingProjectConstant.creatBy);;
-        nursingProject.setCreateTime(LocalDateTime.now());
+//        nursingProject.setCreateBy(NursingProjectConstant.creatBy);;
+//        nursingProject.setCreateTime(LocalDateTime.now());
         nursingProjectMapper.insert(nursingProject);
+    }
+
+    @Override
+    public NursingProjectVO getById(Long id) {
+        NursingProject nursingProject = nursingProjectMapper.selectById(id);
+        NursingProjectVO nursingProjectVO = BeanUtil.copyProperties(nursingProject, NursingProjectVO.class);
+        return nursingProjectVO;
+    }
+
+    @Override
+    public void update(NursingProjectDto nursingProjectDto) {
+        nursingProjectMapper.update(nursingProjectDto);
+    }
+
+    @Override
+    public void updateStatus(Long id, Integer status) {
+        nursingProjectMapper.updateStatus(id, status);
     }
 }

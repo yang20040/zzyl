@@ -63,4 +63,25 @@
             <if test="updateTime != null">#{updateTime},</if>
         </trim>
     </insert>
+
+    <update id="update">
+        UPDATE nursing_project
+        <set>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="orderNo != null">order_no = #{orderNo},</if>
+            <if test="unit != null and unit != ''">unit = #{unit},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="image != null and image != ''">image = #{image},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="nursingRequirement != null and nursingRequirement != ''">nursing_requirement = #{nursingRequirement},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateStatus">
+        UPDATE nursing_project
+            SET status = #{status}
+            WHERE id = #{id}
+    </update>
 </mapper>
