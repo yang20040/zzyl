@@ -137,4 +137,8 @@ public class Constants {
      */
     public static final String DEVICE_LASTDATA_CACHE_KEY = "deviceLastData";
 
+    /**
+     * 设备Token
+     */
+    public static final String USER_TOKEN = "authorization";
 }
