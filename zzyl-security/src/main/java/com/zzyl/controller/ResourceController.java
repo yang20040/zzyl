@@ -23,6 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/resource")
 public class ResourceController {
+
     @Autowired
     private ResourceService resourceService;
 
@@ -35,30 +36,28 @@ public class ResourceController {
         return ResponseResult.success(resourceVoList);
     }
 
-
     @PostMapping("/tree")
     @ApiOperation(value = "资源树形", notes = "资源树形")
     @ApiImplicitParam(name = "resourceDto", value = "资源DTO对象", required = true, dataType = "ResourceDto")
     @ApiOperationSupport(includeParameters = {"resourceDto.label"})
-    public ResponseResult<TreeVo> resourceTreeVo(@RequestBody ResourceDto resourceDto){
+    public ResponseResult<TreeVo> resourceTreeVo(@RequestBody ResourceDto resourceDto) {
         TreeVo treeVo = resourceService.resourceTreeVo(resourceDto);
         return ResponseResult.success(treeVo);
     }
 
     @PutMapping
-    @ApiOperation(value = "资源添加",notes = "资源添加")
-    @ApiImplicitParam(name = "resourceDto",value = "资源DTO对象",required = true,dataType = "ResourceDto")
-    @ApiOperationSupport(includeParameters = {
-            "resourceDto.dataState"
+    @ApiOperation(value = "资源添加", notes = "资源添加")
+    @ApiImplicitParam(name = "resourceDto", value = "资源DTO对象", required = true, dataType = "ResourceDto")
+    @ApiOperationSupport(includeParameters = {"resourceDto.dataState"
             , "resourceDto.icon"
             , "resourceDto.parentResourceNo"
             , "resourceDto.requestPath"
             , "resourceDto.resourceName"
             , "resourceDto.resourceType"
-            , "resourceDto.sortNo"
-    })
+            , "resourceDto.sortNo"})
     public ResponseResult<ResourceVo> createResource(@RequestBody ResourceDto resourceDto) {
         resourceService.createResource(resourceDto);
         return ResponseResult.success();
     }
+
 }

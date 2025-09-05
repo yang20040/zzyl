@@ -225,14 +225,14 @@
 
   <select id="selectList" resultMap="BaseResultMap">
     select
-      <include refid="Base_Column_List"></include>
+        <include refid="Base_Column_List"></include>
     from sys_resource
     <where>
       <if test="resourceType != null and resourceType != ''">
         and resource_type = #{resourceType}
       </if>
       <if test="parentResourceNo != null and parentResourceNo != ''">
-        and parent_resource_no like concat(#{parentResourceNo}, '%')
+        and parent_resource_no like concat(#{parentResourceNo},'%')
       </if>
       <if test="dataState != null and dataState != ''">
         and data_state = #{dataState}
@@ -240,4 +240,5 @@
     </where>
     order by sort_no asc
   </select>
+
 </mapper>

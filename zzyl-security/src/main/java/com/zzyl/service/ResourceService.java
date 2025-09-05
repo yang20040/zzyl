@@ -15,14 +15,14 @@ public interface ResourceService {
     List<ResourceVo> findResourceList(ResourceDto resourceDto);
 
     /**
-     * 获取资源树形
+     * 资源树形
      * @param resourceDto
      * @return
      */
     TreeVo resourceTreeVo(ResourceDto resourceDto);
 
     /**
-     * 添加资源
+     * 添加资源菜单
      * @param resourceDto
      */
     void createResource(ResourceDto resourceDto);

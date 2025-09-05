@@ -32,9 +32,9 @@ public interface ResourceMapper {
      */
     int batchInsert(@Param("list") List<Resource> list);
 
-    List<Resource> selectList(ResourceDto resourceDto);
+    List<Resource> selectList(ResourceDto dto);
 
-
-    @Select("select * from sys_resource where resource_no=#{parentResourceNo}")
+    @Select("select * from sys_resource where resource_no = #{resourceNo}")
     Resource selectByResourceNo(String parentResourceNo);
+
 }
